@@ -313,7 +313,7 @@ namespace FlatDB
         #endregion
 
         /// <summary>
-        /// Updates the database file with all changes registered via UpdateOnSubmit
+        /// Updates the database file with all changes registered via UpdateOnSubmit, Unregisters tables after submit is complete
         /// </summary>
         public void Submit()
         {
@@ -322,6 +322,7 @@ namespace FlatDB
                 {
                     _saveTables(db);
                 });
+            _tablesToUpdate.Clear();
         }
 
         /// <summary>
