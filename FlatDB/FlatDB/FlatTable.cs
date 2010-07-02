@@ -96,7 +96,7 @@ namespace FlatDB
         /// <summary>
         /// Creates a temp working non-generic FlatTable from a generic instance
         /// </summary>
-        /// <typeparam name="T">Tye type used by the generic FlatTable</typeparam>
+        /// <typeparam name="T">The type used by the generic FlatTable</typeparam>
         /// <param name="Table">The FlatTable[T] to infer from</param>
         /// <returns>The new non-generic FlatTable</returns>
         internal static FlatTable InferFromFlatTable<T>(FlatTable<T> Table)

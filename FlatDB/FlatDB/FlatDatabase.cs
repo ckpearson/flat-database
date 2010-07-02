@@ -146,7 +146,7 @@ namespace FlatDB
         /// Creates a new table with a type and a non-default name
         /// </summary>
         /// <typeparam name="T">The type representing structure</typeparam>
-        /// <param name="Name">The name to give the database</param>
+        /// <param name="Name">The name to give the table</param>
         /// <returns></returns>
         public FlatTable<T> CreateTable<T>(string Name)
         {
