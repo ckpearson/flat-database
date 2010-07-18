@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
+using System.Runtime.InteropServices;
 
 namespace Test
 {
@@ -11,45 +12,44 @@ namespace Test
         static void Main(string[] args)
         {
 
-            FlatDB.FlatDatabase db = new FlatDB.FlatDatabase(@"C:\users\clint\desktop\db1.xml", true);
-            FlatDB.FlatTable<Contact> contacts;
-            try
-            {
-                contacts = db.CreateTable<Contact>();
-            }
-            catch (Exception)
-            {
-                contacts = (FlatDB.FlatTable<Contact>)db.GetTableByType<Contact>();
-            }
+            FlatDB.FlatDatabase db = new FlatDB.FlatDatabase(@"C:\users\clint\desktop\testdatabase.xml", true);
 
-            //contacts.AddRecord(
+            //var cont = new FlatDB.FlatTable<Contact>();
+
+            //var contacts = db.GetTable<Contact>();
+
+            FlatDB.FlatTable<Contact> c = new FlatDB.FlatTable<Contact>();
+            c.AddRecord(new Contact()
+            {
+                Title = "Mr",
+                FirstName = "Bob",
+                LastName = "Smith",
+                Email = "smith.bob@gmail.com",
+            });
+
+            FlatDB.FlatTable<object> o = FlatDB.FlatTable<object>.TypedTable<Contact>(c);
+
+            //cont.AddRecord(
             //    new Contact()
             //    {
             //        Title = "Mr",
             //        FirstName = "Bob",
             //        LastName = "Smith",
-            //        Email = null,
+            //        Email = "smith.bob@gmail.com",
             //    });
 
-            var misters = from mr in db.GetTableByType<Contact>()
-                          where mr.Title == "Mr"
-                          select mr;
+            //cont.AddRecord(
+            //    new Contact()
+            //    {
+            //        Title = "Mrs",
+            //        FirstName = "Alice",
+            //        LastName = "Smith",
+            //        Email = "smith.alice@googlemail.com",
+            //    });
 
-            //db.DeleteTable<Contact>("Contacts");
+            //db.AddTable<Contact>(cont);
 
-            db.UpdateOnSubmit<Contact>(contacts);
-            db.Submit();
-
-            foreach(Contact c in misters)
-            {
-                Console.WriteLine(
-                    String.Format("{0} {1} {2} - {3}",
-                    c.Title,
-                    c.FirstName,
-                    c.LastName,
-                    c.Email));
-            }
-
+            //db.Submit();
             Console.ReadLine();
         }
     }

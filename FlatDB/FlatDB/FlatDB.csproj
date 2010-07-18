@@ -38,16 +38,18 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity.Design" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FlatDatabase.cs" />
+    <Compile Include="FlatRecord.cs" />
     <Compile Include="FlatTable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="_extensions.cs" />
+    <Compile Include="_res.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
